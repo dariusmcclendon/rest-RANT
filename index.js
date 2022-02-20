@@ -19,7 +19,7 @@ app.get('*',(req, res)=>{
 
 //places index page
 app.get('/places', (req,res) => {
-    res.send('Places index page')
+    res.render('index')
 })
 
 //create new place
