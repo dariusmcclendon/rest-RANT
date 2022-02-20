@@ -5,9 +5,11 @@ let app = express()
 app.use('/places',require('./controllers/places.js'))
 
 
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 //default route
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.render('home')
 })
 
 //404 route
