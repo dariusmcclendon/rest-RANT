@@ -8,6 +8,13 @@ function Def (html) {
                 <link rel="stylesheet" href="css/style.css"></link>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
             </head>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/places">Places</a></li>
+                    <li><a href="/places/new">Add Places</a></li>
+                </ul>
+            </nav>
             <body>
                 {html.children}
             </body>
