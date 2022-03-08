@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
 
 //edit form route
 router.get('/:id/edit', (req, res) => {
-  res.send('GET edit form stub')
+  
 })
 
 

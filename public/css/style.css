@@ -25,21 +25,4 @@ body {
     background-color:cornflowerblue;
     text-align: center;
 }
-main {
-    display : flex;
-    flex-direction : column;
-    justify-content : center;
-    text-align : center;
-    margin-right: 20px;
-    margin-left: 20px;
-    background-color: white;
-}
-h1 {
-    text-align : center ;
-    
-}
 
-img {
-    width : 75%;
-    height : auto;
-}

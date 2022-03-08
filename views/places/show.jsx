@@ -5,16 +5,23 @@ function show(data){
     return (
         <Def>
             <main>
-                <div>
-                    <img src={data.place.pic} align='right'></img>
+                <div className="row">
+                <div className="col-sm-6">
+                    <img src={data.place.pic} alt={data.place.name} className="float-left"></img>
+                    <p>Located in {data.place.city}, {data.place.state}</p>
                     <h1>{data.place.name}</h1>
-                    <div>
+                    <div className="col-sm-6">
                         <h2>Rating</h2>
                         <p>Not Rated</p>
                     </div>
-                    <div>
+                    <div className="col-sm-6">
                         <h2>Description</h2>
-                        <p>Located in {data.place.city}, {data.place.state} and serving {data.place.cuisines}</p>
+                        <h3>
+                            {data.place.showEstablished()}
+                        </h3>
+                        <h4>
+                            Serving {data.place.cuisine}
+                        </h4>
                     </div>
                     <div>
                         <a href={`/places/${data.id}/edit`} className="btn btn-warning">
@@ -31,6 +38,8 @@ function show(data){
                     <h2>Comments</h2>
                     <p>No comments yet!</p>
                 </div>
+                </div>
+               
 
                 
                 
