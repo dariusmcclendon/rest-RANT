@@ -27,14 +27,6 @@ app.get('/places', (req,res) => {
     res.render('index')
 })
 
-//create a rant about a particular place
-app.post('/places/:id/rant', (req, res) => {
-    res.send('create rant')
-})
 
-//delete a rant
-app.delete('/places/:id/rant/rantId', (req, res) => {
-    res.send('delete rant')
-})
 
 app.listen(process.env.PORT)

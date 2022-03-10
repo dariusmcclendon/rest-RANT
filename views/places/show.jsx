@@ -55,9 +55,48 @@ function show(data){
                 </div>   
                 <div>
                     <h2>Comments</h2>
-                    <form>
-
-                    </form>
+                    <div>
+                        <h1>Add A Comment</h1>
+                        <form method="POST" action={`/places/${data.place.id}/comment`}>
+                            <div className="form-group">
+                                <label htmlFor="author">Author</label>
+                                <input className="form-control" 
+                                        id="author" 
+                                        name="author" 
+                                        required
+                                        />
+                            </div>
+                            <div className="form-group">
+                                <input className="form-control" 
+                                        id="content" 
+                                        name="content" 
+                                        required
+                                        />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="stars">Star Rating</label>
+                                <input className="form-control" 
+                                        id="star-rating" 
+                                        name="stars"
+                                        type="number"
+                                        step="0.5" 
+                                        required
+                                        />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="rant">Rant</label>
+                                <input className="form-control" 
+                                        id="rant" 
+                                        name="rant" 
+                                        type="checkbox"
+                                        required
+                                        />
+                            </div>
+                            <button type="submit" className="btn">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
                     {comments}
                 </div>
                 </div>
