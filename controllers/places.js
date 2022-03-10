@@ -31,12 +31,30 @@ router.get('/new',(req,res)=>{
 
 //edit PUT route
 router.put('/:id', (req, res) => {
-  res.send('PUT /places/:id stub')
+  console.log('update : ' + req.body)
+  
+  db.Place.findByIdAndUpdate(req.params.id, req.body)
+  .then(place=>{
+    res.render(`places/show`, {place})
+  })
+  .catch((err)=>{
+    console.log('ERROR : ', err)
+    res.render('error404')
+  })
 })
 
 
 //edit form route
 router.get('/:id/edit', (req, res) => {
+  db.Place.findById(req.params.id)
+  .then(place =>{
+    res.render('places/edit', {place})
+  })
+  .catch((err)=>{
+    console.log('ERROR : ', err)
+    res.render('error404')
+  })
+  
   
 })
 
@@ -46,7 +64,8 @@ router.get('/:id/edit', (req, res) => {
 
 //delete route
 router.delete('/places/:id', (req,res)=>{
-  res.send('DELETE /places/:id stub')
+  db.Place.findByIdAndDelete(req.params.id)
+  .then(res.redirect('/places'))
 })
 
 //show page
@@ -54,7 +73,7 @@ router.get('/:id', (req, res) => {
  db.Place.findById(req.params.id)
  .populate('comments')
  .then(place =>{
-   console.log(place.comments)
+   //console.log(place.comments)
    res.render('places/show', {place})
  })
  .catch((err)=>{
