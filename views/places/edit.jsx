@@ -21,7 +21,8 @@ function edit_form(data){
                     <input className="form-control" 
                         type="url" 
                         id="pic" 
-                        name="pic"/>
+                        name="pic"
+                        value={data.place.pic}/>
                 </div>
                 <div className = "form-group">
                     <label htmlFor="city">City</label>

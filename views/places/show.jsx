@@ -7,7 +7,25 @@ function show(data){
             No Comments yet!
         </h3>
     )
+    let rating = (
+        <h3 classname="inactive">
+            Not yet rated
+        </h3>
+    )
     if (data.place.comments.length) {
+        let sumRatings = data.place.comments.reduce((tot, c)=>{
+            return tot + c.stars
+        }, 0)
+        let averageRating = Math.round(sumRatings / data.place.comments.length)
+        let stars = ''
+        for (let i = 0; i < averageRating; i++){
+            stars +='⭐️'
+        }
+        rating = (
+            <h3>
+                {stars} stars
+            </h3>
+        )
         comments = data.place.comments.map(c => {
             return (
                 <div className="border">
@@ -31,7 +49,7 @@ function show(data){
                     <h1>{data.place.name}</h1>
                     <div className="col-sm-6">
                         <h2>Rating</h2>
-                        <p>Not Rated</p>
+                        {rating}
                     </div>
                     <div className="col-sm-6">
                         <h2>Description</h2>
@@ -56,7 +74,7 @@ function show(data){
                 <div>
                     <h2>Comments</h2>
                     <div>
-                        <h1>Add A Comment</h1>
+                        <h3>Add A Comment</h3>
                         <form method="POST" action={`/places/${data.place.id}/comment`}>
                             <div className="form-group">
                                 <label htmlFor="author">Author</label>
@@ -67,6 +85,7 @@ function show(data){
                                         />
                             </div>
                             <div className="form-group">
+                                <label htmlFor="content">Your comment here...</label>
                                 <input className="form-control" 
                                         id="content" 
                                         name="content" 
@@ -85,11 +104,11 @@ function show(data){
                             </div>
                             <div className="form-group">
                                 <label htmlFor="rant">Rant</label>
-                                <input className="form-control" 
+                                <input 
                                         id="rant" 
                                         name="rant" 
                                         type="checkbox"
-                                        required
+                                    
                                         />
                             </div>
                             <button type="submit" className="btn">
