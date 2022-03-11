@@ -82,7 +82,10 @@ router.post('/:id/comment', (req, res) => {
       res.render('error404')
   })
 })
-
+//delete comment route
+router.delete('/places/:id/comment/:commentId'), (req,res)=>{
+  res.send('delete comment route')
+}
 //delete route
 router.delete('/places/:id', (req,res)=>{
   db.Place.findByIdAndDelete(req.params.id)
