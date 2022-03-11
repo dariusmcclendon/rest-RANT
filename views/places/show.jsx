@@ -2,15 +2,18 @@ let React = require('react')
 let Def = require('../default')
 
 function show(data){
+    let commentStyle={
+        margin: '4px',
+    }
     let comments = (
         <h3 className="inactive">
             No Comments yet!
         </h3>
     )
     let rating = (
-        <h3 classname="inactive">
+        <h4 classname="inactive">
             Not yet rated
-        </h3>
+        </h4>
     )
     if (data.place.comments.length) {
         let sumRatings = data.place.comments.reduce((tot, c)=>{
@@ -22,13 +25,13 @@ function show(data){
             stars +='⭐️'
         }
         rating = (
-            <h3>
+            <h4>
                 {stars} stars
-            </h3>
+            </h4>
         )
         comments = data.place.comments.map(c => {
             return (
-                <div className="border">
+                <div className="border container bg-white" style={commentStyle}>
                     <h2 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h2>
                     <h4>{c.content}</h4>
                     <h3>
@@ -45,35 +48,38 @@ function show(data){
     return (
         <Def>
             <main>
+            <h1 className='text-center'>{data.place.name}</h1>
                 <div className="row">
-                <div className="col-sm-6">
-                    <img src={data.place.pic} alt={data.place.name} className="float-left"></img>
-                    <p>Located in {data.place.city}, {data.place.state}</p>
-                    <h1>{data.place.name}</h1>
-                    <div className="col-sm-6">
-                        <h2>Rating</h2>
-                        {rating}
+                    <div className="col">
+                        <img src={data.place.pic} alt={data.place.name} className="img-fluid border"></img>
+                        <p>Located in {data.place.city}, {data.place.state}</p>
+                        
+                    
                     </div>
-                    <div className="col-sm-6">
+                    <div className="col">
+                        
                         <h2>Description</h2>
-                        <h3>
+                            <h3 class='text-secondary'>
                             {data.place.showEstablished()}
-                        </h3>
-                        <h4>
-                            Serving {data.place.cuisines}
-                        </h4>
-                    </div>
-                    <div>
-                        <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">
+                            </h3>
+
+                            <h4 class='text-secondary'>
+                                Serving {data.place.cuisines}
+                            </h4>
+                            <h2>Rating</h2>
+                            {rating}
+                            <a href={`/places/${data.place.id}/edit`} className="btn btn-warning">
                             Edit
-                        </a>
-                        <form method="POST" action={`places/${data.place.id}?_method=DELETE`}>
-                            <button type="submit" className="btn btn-danger">
+                            </a>
+                            <form method="POST" action={`places/${data.place.id}?_method=DELETE`}>
+                                <button type="submit" className="btn btn-danger">
                                 Delete
-                            </button>
-                        </form>
+                                </button>
+                            </form>
                     </div>
-                </div>   
+                        
+                </div>
+                       
                 <div>
                     <h2>Comments</h2>
                     <div>
@@ -121,7 +127,7 @@ function show(data){
                     </div>
                     {comments}
                 </div>
-                </div>
+                
                
 
                 
